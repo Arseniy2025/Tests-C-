@@ -120,7 +120,6 @@ void generateRandomFigures(Figure randomFigures[], int count) {
     }
 }
 
-
 void printFigure( Figure& figure) {
     cout << "Figure ID: " << figure.id << endl;
     for (int i = 0; i < 4; ++i) {
@@ -132,31 +131,42 @@ void printFigure( Figure& figure) {
     cout << endl;
 }
 
-
-
 bool Down(Figure& figure) {
 
     bool canMove = true;
-    for (int j = 0; j < 4; j++) {
-        if (figure.field[3][j] == 1) {
-            canMove = false;
-        }
-    }
-    if (canMove) {
 
-        for (int i = 3; i > 0; --i) {
-            for (int j = 0; j < 4; ++j) {
-                figure.field[i][j] = figure.field[i - 1][j];
+    for (int row = 3; row > 0; --row) {
+        for (int col = 0; col < 4; ++col) {
+            if (figure.field[row][col] == 1 && figure.field[row - 1][col] == 1) {
+                continue;
+            }
+            else if (figure.field[row][col] == 1 && figure.field[row - 1][col] == 0 && row > 0)
+            {
+
+                continue;
+
+            }
+            else if (figure.field[row][col] == 1 && row == 0)
+            {
+                canMove = false;
+                break;
             }
         }
-        for (int j = 0; j < 4; j++) {
-            figure.field[0][j] = 0;
+        if (!canMove)
+            break;
+    }
+    if (canMove) {
+        for (int row = 3; row > 0; --row) {
+            for (int col = 0; col < 4; ++col) {
+                if (figure.field[row - 1][col] == 1 && figure.field[row][col] == 0) {
+                    figure.field[row][col] = 1;
+                    figure.field[row - 1][col] = 0;
+                }
+            }
         }
-        return true;
     }
-    else {
-        return false;
-    }
+
+    return canMove;
 }
 
 
@@ -189,14 +199,29 @@ void Rotate(Figure& figure) {
     }
 }
 
+void mFigures(int board[20][10], Figure& figure, int row, int col) {
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            if (figure.field[i][j] == 1) {
+                int boardRow = row + i;
+                int boardCol = col + j;
+                if (boardRow >= 0 && boardRow < 20 && boardCol >= 0 && boardCol < 10)
+                    board[boardRow][boardCol] = 1;
+            }
+        }
+    }
+}
 
-
-
-
-
-
-
-
+void printBoard(int board[20][10]) {
+    cout << "Текущая доска: " << endl;
+    for (int i = 0; i < 20; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            cout << board[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
 
 
 
@@ -204,37 +229,38 @@ int main() {
     setlocale(LC_ALL, "Russian");
     Figure allFigures[7];
     createFigures(allFigures);
-
+    int gameBoard[20][10] = { 0 };
     const int count = 4;
     for (int i = 0; i < count; ++i) {
-        Figure currentFigure = allFigures[i % 7]; 
+        Figure currentFigure = allFigures[i % 7];
+        int row = 0;
+        int col = 3;
 
-        cout << "Начальная фигура: " << endl;
+        cout << "Начальная фигура:" << endl;
+        printFigure(currentFigure);
+
+        cout << "Фигура после поворота:" << endl;
+        Rotate(currentFigure);
         printFigure(currentFigure);
 
         for (int k = 0; k < 3; k++) {
             if (Down(currentFigure)) {
-                cout << "Фигура после сдвига вниз: " << endl;
+                cout << "Фигура после сдвига вниз:" << endl;
                 printFigure(currentFigure);
+                ;
             }
             else {
                 cout << "Нельзя сдвинуть фигуру" << endl;
                 break;
             }
         }
+        mFigures(gameBoard, currentFigure, row, col);
+        cout << "Игровое поле после слияния: " << endl;
+        printBoard(gameBoard);
     }
-
-    for (int i = 0; i < count; ++i) {
-        Figure currentFigure = allFigures[i % 7];
-
-        cout << "Начальная фигура: " << endl;
-        printFigure(currentFigure);
-
-        cout << "Фигура после поворота на 90 градусов: " << endl;
-        Rotate(currentFigure);
-        printFigure(currentFigure);
-    }
-    
-    
     return 0;
 }
+
+
+
+
