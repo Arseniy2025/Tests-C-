@@ -223,8 +223,6 @@ void printBoard(int board[20][10]) {
     cout << endl;
 }
 
-
-
 int main() {
     setlocale(LC_ALL, "Russian");
     Figure allFigures[7];
@@ -247,7 +245,7 @@ int main() {
             if (Down(currentFigure)) {
                 cout << "Фигура после сдвига вниз:" << endl;
                 printFigure(currentFigure);
-                ;
+                
             }
             else {
                 cout << "Нельзя сдвинуть фигуру" << endl;
@@ -264,3 +262,20 @@ int main() {
 
 
 
+
+
+
+
+/*int main() {
+    const int count = 5;
+    Figure randomFigures[count];
+    generateRandomFigures(randomFigures, count);
+
+
+    for (int i = 0; i < count; ++i) {
+        printFigure(randomFigures[i]);
+    }
+
+    return 0;
+}
+*/
