@@ -32,9 +32,9 @@ private:
 public:
     Func(int a, int b,int c)
     {
-        a = a;
-        b = b;
-        c = c;
+       this -> a = a;
+       this -> b = b;
+       this -> c = c;
     }
     bool isContains(Point& point) {
         return (point.y == a * point.x * point.x + b * point.x + c)?true:false;
