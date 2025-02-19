@@ -8,7 +8,7 @@ class Point;
 class Function;
 
 class Point {
-    friend Func;
+    friend class Func;
 private:
     int x;
     int y;
