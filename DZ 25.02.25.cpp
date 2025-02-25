@@ -1,22 +1,36 @@
 #include <iostream>
+using namespace std;
 struct Piece {
-    char symbol; 
-    bool isWhite; 
+    char symbol;
+    bool isWhite;
 };
 
 class ChessBoard {
 private:
-    static const int size = 8;
-    Piece board[size][size];
+    int size; 
+    Piece** board; 
 
 public:
-    ChessBoard() {
+    ChessBoard(int boardSize = 8) : size(boardSize) {
+        board = new Piece * [size];
+        for (int i = 0; i < size; ++i) {
+            board[i] = new Piece[size];
+        }
+
         
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
-                board[i][j] = { '.', false }; 
+                board[i][j] = { '.', false };
             }
         }
+    }
+
+    
+    ~ChessBoard() {
+        for (int i = 0; i < size; ++i) {
+            delete[] board[i];
+        }
+        delete[] board;
     }
 
     void placePiece(int row, int col, char symbol, bool isWhite) {
@@ -25,29 +39,26 @@ public:
         }
     }
 
-    void printBoard() const {
+    void printBoard() {
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
                 if ((i + j) % 2 == 0) {
-                    std::cout << "#"; 
+                    cout << "#";
                 }
                 else {
-                    std::cout << " "; 
+                    cout << " ";
                 }
 
-                
-                std::cout << board[i][j].symbol;
+                cout << board[i][j].symbol;
             }
-            std::cout << std::endl;
+            cout << std::endl;
         }
     }
 };
 
 int main() {
-    ChessBoard chessBoard;
-    chessBoard.placePiece(0, 4, 'K', true);
-
-    chessBoard.placePiece(7, 3, 'Q', false);
+    ChessBoard chessBoard(10); 
+    
 
     chessBoard.printBoard();
 
