@@ -56,7 +56,7 @@ data class Task(
     val title: String,
     val description: String,
     var isCompleted: Boolean = false,
-    var priority: Int = 0, //0 - green, 1 - yellow, 2 - red
+    var priority: Int = 0,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,9 +80,9 @@ fun TaskManager() {
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("Task manager") },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(//Task manager в центре
-                    containerColor = Color(0xFFF13434),//Цвет фона
-                    titleContentColor = Color.Black // Текст
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = Color(0xFFF13434),
+                    titleContentColor = Color.Black
                 )
             )
         }
@@ -117,14 +117,17 @@ fun TaskManager() {
             Spacer(modifier = Modifier.height(8.dp))
 
             if (!showArchiveTasks) {
-                tasks.forEach { task ->
+
+                val sortedTasks = tasks.sortedByDescending { it.priority }
+                sortedTasks.forEach { task ->
                     TaskItem(task) {
                         tasks.remove(task)
                         archiveTasks.add(task)
                     }
                 }
             } else {
-                archiveTasks.forEach { task ->
+                val sortedArchiveTasks = archiveTasks.sortedByDescending { it.priority }
+                sortedArchiveTasks.forEach { task ->
                     TaskItem(task) {
                         archiveTasks.remove(task)
                     }
@@ -220,8 +223,6 @@ fun TaskItem(task: Task, onDelete: () -> Unit){
         else -> {Color.Cyan}
     }
 
-
-
     Card(
         colors = CardColors(
             containerColor = color,
@@ -232,7 +233,6 @@ fun TaskItem(task: Task, onDelete: () -> Unit){
         modifier = Modifier.padding(8.dp),
     )
     {
-
         Row(
             modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -257,7 +257,4 @@ fun TaskItem(task: Task, onDelete: () -> Unit){
             }, modifier = Modifier) { Icon(Icons.Default.Delete, contentDescription = null) }
         }
     }
-
-
-
 }
