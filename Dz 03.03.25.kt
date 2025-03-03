@@ -1,4 +1,4 @@
-//Задаие 1 
+//Задание 1 
 fun main() {
     println("Введите символ:")
     val input = readLine()
