@@ -1,485 +1,255 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class ComputingMachine {
+
+class BaseClass {
 protected:
-    string model;
     int power;
+    string name;
 
 public:
-    ComputingMachine() : model(""), power(0) {}
-
-    ComputingMachine(const string& model, int power) : model(model) {
-        SetPower(power);
+    
+    BaseClass() {
+        power = 0;
+        name = "Неизвестно";
+    }
+    BaseClass(int p, const string& n) {
+        this->power = p;
+        this->name = n;
     }
 
-    
-    string GetModel() const { return model; }
-    void SetModel(const string& model) { this->model = model; }
-
-    int GetPower() const { return power; }
-    void SetPower(int power) {
-        if (power >= 0) {
-            this->power = power;
+    void setPower(int p) {
+        if (p >= 0) {
+            power = p;
         }
         else {
-            cout << "Ошибка: Мощность должна быть неотрицательной. Установите значение мощности равным 0." << endl;
-            this->power = 0;
+            cout << "Ошибка: мощность не может быть отрицательной." << endl;
         }
-    }
-
-    virtual void DisplayInfo() const {
-        cout << "Вычислительная машина: Модель = " << model << ", Мощность = " << power << "В";
-    }
-
-    bool operator==(const ComputingMachine& other) const {
-        return (model == other.model && power == other.power);
-    }
-
-    
-    ComputingMachine operator+(const ComputingMachine& other) const {
-        return ComputingMachine(model + "+" + other.model, power + other.power);
     }
 
    
-    ComputingMachine& operator++() {
-        power++;
-        return *this;
+    bool operator==(const BaseClass& other) const {
+        return power == other.power && name == other.name;
     }
 
     
-    ComputingMachine operator++(int) {
-        ComputingMachine temp = *this;
-        ++(*this);
-        return temp;
+    BaseClass operator+(const BaseClass& other) const {
+        return BaseClass(power + other.power, name + " & " + other.name);
+    }
+
+    
+    BaseClass& operator++() {
+        ++power;
+        return *this;
+    }
+
+    virtual void print() const {
+        cout << "Вычислительная машина: " << name << ", мощность: " << power << endl;
     }
 };
 
 
-class PersonalComputer : public ComputingMachine {
-protected:
-    string operatingSystem;
+class DerivedClass1 : public BaseClass {
+private:
     int ram; 
 
 public:
-    PersonalComputer() : ComputingMachine(), operatingSystem(""), ram(0) {}
-
-    PersonalComputer(const string& model, int power, const string& operatingSystem, int ram)
-        : ComputingMachine(model, power), operatingSystem(operatingSystem) {
-        SetRam(ram);
+    DerivedClass1() {
+        ram=0;
+    }
+    DerivedClass1(int p, const string& n, int r) {
+        this->power = p; 
+        this->name = n;  
+        this->ram = r;
     }
 
-    
-    string GetOperatingSystem() const { return operatingSystem; }
-    void SetOperatingSystem(const string& operatingSystem) { this->operatingSystem = operatingSystem; }
-
-    int GetRam() const { return ram; }
-    void SetRam(int ram) {
-        if (ram >= 0) {
-            this->ram = ram;
+    void setRAM(int r) {
+        if (r >= 0) {
+            ram = r;
         }
         else {
-            cout << "Ошибка: значение RAM должно быть неотрицательным. Значение RAM равно 0." << endl;
-            this->ram = 0;
+            cout << "Ошибка: оперативная память не может быть отрицательной." << endl;
         }
     }
 
-    void DisplayInfo() const override {
-        ComputingMachine::DisplayInfo();
-        cout << ", Операционная система = " << operatingSystem << ", RAM = " << ram << "Гб";
-    }
-
-    bool operator==(const PersonalComputer& other) const {
-        return (ComputingMachine::operator==(other) && operatingSystem == other.operatingSystem && ram == other.ram);
-    }
-
-    PersonalComputer operator+(const PersonalComputer& other) const {
-        return PersonalComputer(GetModel() + "+" + other.GetModel(), GetPower() + other.GetPower(), operatingSystem + "+" + other.operatingSystem, ram + other.ram);
-    }
-    PersonalComputer& operator++() {
-        ram++;
-        return *this;
-    }
-
-    PersonalComputer operator++(int) {
-        PersonalComputer temp = *this;
-        ++(*this);
-        return temp;
+    void print() const override {
+        cout << "Персональный компьютер: " << name << ", мощность: " << power << ", ОЗУ: " << ram << "GB" << endl;
     }
 };
 
-
-class Laptop : public PersonalComputer {
-protected:
-    double screenSize;
-    bool hasWebcam;
+class DerivedClass2 : public BaseClass {
+private:
+    double screenSize; 
 
 public:
-    Laptop() : PersonalComputer(), screenSize(0.0), hasWebcam(false) {}
-
-    Laptop(const std::string& model, int power, const std::string& operatingSystem, int ram, double screenSize, bool hasWebcam)
-        : PersonalComputer(model, power, operatingSystem, ram), screenSize(screenSize), hasWebcam(hasWebcam) {
-        SetScreenSize(screenSize);
+    DerivedClass2() {
+        screenSize = 0.0;
+    }
+    DerivedClass2(int p, const string& n, double s) {
+        this->power = p;
+        this->name = n;
+        this->screenSize = s;
     }
 
-    double GetScreenSize() const { return screenSize; }
-    void SetScreenSize(double screenSize) {
-        if (screenSize >= 0) {
-            this->screenSize = screenSize;
+    void setScreenSize(double s) {
+        if (s >= 0) {
+            screenSize = s;
         }
         else {
-            cout << "Ошибка: Размер экрана должен быть неотрицательным. Значение равно 0." << endl;
-            this->screenSize = 0;
+            cout << "Ошибка: размер экрана не может быть отрицательным." << endl;
         }
     }
 
-
-    bool HasWebcam() const { return hasWebcam; }
-    void SetHasWebcam(bool hasWebcam) { this->hasWebcam = hasWebcam; }
-
-    
-    void DisplayInfo() const override {
-        PersonalComputer::DisplayInfo();
-        cout << ",Размер экрана = " << screenSize << " дюймов, Веб-камера = " << (hasWebcam ? "Yes" : "No");
-    }
-
-    bool operator==(const Laptop& other) const {
-        return (PersonalComputer::operator==(other) && screenSize == other.screenSize && hasWebcam == other.hasWebcam);
-    }
-
-    Laptop operator+(const Laptop& other) const {
-        return Laptop(GetModel() + "+" + other.GetModel(), GetPower() + other.GetPower(), GetOperatingSystem() + "+" + other.GetOperatingSystem(), GetRam() + other.GetRam(), screenSize + other.screenSize, hasWebcam || other.hasWebcam);
-    }
-
-    Laptop& operator++() {
-        screenSize++;
-        return *this;
-    }
-
-    Laptop operator++(int) {
-        Laptop temp = *this;
-        ++(*this);
-        return temp;
+    void print() const override {
+        cout << "Ноутбук: " << name << ", мощность: " << power << ", размер экрана: " << screenSize << " дюймов" << endl;
     }
 };
 
-class Tablet : public ComputingMachine {
-protected:
-    string operatingSystem;
-    double screenSize;
+
+class DerivedClass3 : public BaseClass {
+private:
+    int batteryLife; 
 
 public:
-    Tablet() : ComputingMachine(), operatingSystem(" "), screenSize(0.0) {}
-
-    Tablet(const string& model, int power, const std::string& operatingSystem, double screenSize)
-        : ComputingMachine(model, power), operatingSystem(operatingSystem) {
-        SetScreenSize(screenSize);
+    DerivedClass3() {
+        batteryLife = 0;
+    }
+    DerivedClass3(int p, const string& n, int b) {
+        this->power = p;
+        this->name = n;
+        this->batteryLife = b;
     }
 
-    string GetOperatingSystem() const { return operatingSystem; }
-    void SetOperatingSystem(const string& operatingSystem) { this->operatingSystem = operatingSystem; }
-
-    double GetScreenSize() const { return screenSize; }
-    void SetScreenSize(double screenSize) {
-        if (screenSize >= 0) {
-            this->screenSize = screenSize;
+    void setBatteryLife(int b) {
+        if (b >= 0) {
+            batteryLife = b;
         }
         else {
-            cout << "Ошибка: Размер экрана должен быть неотрицательным. Значение равно 0." << endl;
-            this->screenSize = 0;
+            cout << "Ошибка: время работы от батареи не может быть отрицательным." << endl;
         }
     }
 
-
-    void DisplayInfo() const override {
-        ComputingMachine::DisplayInfo();
-        cout << ", Операционная система = " << operatingSystem << ", Размер экрана = " << screenSize << " дюймы";
-    }
-
-    bool operator==(const Tablet& other) const {
-        return (ComputingMachine::operator==(other) && operatingSystem == other.operatingSystem && screenSize == other.screenSize);
-    }
-
-    Tablet operator+(const Tablet& other) const {
-        return Tablet(GetModel() + "+" + other.GetModel(), GetPower() + other.GetPower(), operatingSystem + "+" + other.operatingSystem, screenSize + other.screenSize);
-    }
-
-   
-    Tablet& operator++() {
-        screenSize++;
-        return *this;
-    }
-
-    
-    Tablet operator++(int) {
-        Tablet temp = *this;
-        ++(*this);
-        return temp;
+    void print() const override {
+        cout << "Планшет: " << name << ", мощность: " << power << ", время работы от батареи: " << batteryLife << " часов" << endl;
     }
 };
 
-
-int GetIntInput(const string& prompt) {
-    int value;
-    while (true) {
-        cout << prompt;
-        cin >> value;
-
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Неверный ввод. Пожалуйста, введите целое число." << endl;
-        }
-        else {
-            cin.ignore(1000, '\n');
-            return value;
-        }
-    }
-}
-
-double GetDoubleInput(const string& prompt) {
-    double value;
-    while (true) {
-        cout << prompt;
-        cin >> value;
-
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Неверный ввод. Пожалуйста, введите номер." << endl;
-        }
-        else {
-            cin.ignore(1000, '\n');
-            return value;
-        }
-    }
-}
-
-struct MachineNode {
-    ComputingMachine* data;
-    MachineNode* next;
-};
-
-void addMachine(MachineNode** head, ComputingMachine* machine) {
-    MachineNode* newNode = new MachineNode;
-    newNode->data = machine;
-    newNode->next = *head;
-    *head = newNode;
-}
-
-bool deleteMachine(MachineNode** head, int index) {
-    if (*head == nullptr) return false;
-
-    if (index == 0) {
-        MachineNode* temp = *head;
-        *head = (*head)->next;
-        delete temp->data;
-        delete temp;
-        return true;
-    }
-
-    MachineNode* current = *head;
-    MachineNode* previous = nullptr;
-    int currentIndex = 0;
-
-    while (current != nullptr && currentIndex != index) {
-        previous = current;
-        current = current->next;
-        currentIndex++;
-    }
-
-    if (current == nullptr) return false;
-
-    previous->next = current->next;
-    delete current->data;
-    delete current;
-    return true;
-}
-
-void displayMachines(MachineNode* head) {
-    MachineNode* current = head;
-    int index = 0;
-    while (current != nullptr) {
-        std::cout << index++ << ": ";
-        current->data->DisplayInfo();
-        std::cout << std::endl;
-        current = current->next;
-    }
-}
-
-ComputingMachine* getMachine(MachineNode* head, int index) {
-    MachineNode* current = head;
-    int currentIndex = 0;
-
-    while (current != nullptr && currentIndex != index) {
-        current = current->next;
-        currentIndex++;
-    }
-
-    if (current == nullptr) return nullptr;
-
-    return current->data;
-}
-
-void freeMachines(MachineNode** head) {
-    MachineNode* current = *head;
-    while (current != nullptr) {
-        MachineNode* next = current->next;
-        delete current->data;
-        delete current;
-        current = next;
-    }
-    *head = nullptr;
-}
 
 int main() {
-    MachineNode* machines = nullptr;
+    setlocale(LC_ALL, "Russian");
+    const int MAX_SIZE = 100; 
+    BaseClass* collection[MAX_SIZE] = { nullptr }; 
+    int count = 0; 
 
-    while (true) {
-        cout << "\nMenu:\n";
+    int choice;
+
+    do {
+        cout << "\nМеню:\n";
         cout << "1. Добавить новый элемент\n";
         cout << "2. Удалить элемент по индексу\n";
-        cout << "3. Вывести все элементы\n";
-        cout << "4. Сравнить два элемента на предмет равенства\n";
-        cout << "5. Выход\n";
-
-        int choice = GetIntInput("Введите свой выбор: ");
+        cout << "3. Вывод всех элементов\n";
+        cout << "4. Сравнение двух элементов на равенство\n";
+        cout << "5. Завершение работы\n";
+        cout << "Выберите пункт: ";
+        cin >> choice;
 
         switch (choice) {
         case 1: {
-            cout << "Выберите тип:\n";
-            cout << "1. Вычислительная машина\n";
-            cout << "2. Персональный компьютер\n";
-            cout << "3. Ноутбук\n";
-            cout << "4. Планшет\n";
-            int typeChoice = GetIntInput("Выберите тип ввода: ");
+            if (count >= MAX_SIZE) {
+                cout << "Достигнуто максимальное количество элементов." << endl;
+                break;
+            }
 
-            string model;
+            int type;
+            cout << "Выберите тип элемента (1 - Персональный компьютер, 2 - Ноутбук, 3 - Планшет): ";
+            cin >> type;
+
             int power;
+            string name;
+            cout << "Введите мощность: ";
+            cin >> power;
+            cout << "Введите название: ";
+            cin >> name;
 
-            cout << "Введите модель: ";
-            cin >> ws; 
-            cin >> model;
-
-            power = GetIntInput("Входная мощность (Вт): ");
-
-            switch (typeChoice) {
-            case 1: {
-                addMachine(&machines, new ComputingMachine(model, power));
-                break;
-            }
-            case 2: {
-                string os;
+            if (type == 1) {
                 int ram;
-                cout << "Введите операционную систему: ";
-                cin >> ws;
-                cin >> os;
-
-                ram = GetIntInput("Введите объем оперативной памяти (ГБ): ");
-
-                addMachine(&machines, new PersonalComputer(model, power, os, ram));
-                break;
+                cout << "Введите объем ОЗУ: ";
+                cin >> ram;
+                collection[count] = new DerivedClass1(power, name, ram);
             }
-            case 3: {
-                string os;
-                int ram;
+            else if (type == 2) {
                 double screenSize;
-                bool hasWebcam;
-
-                cout << "Введите операционную систему: ";
-                cin >> ws;
-                cin >> os;
-
-                ram = GetIntInput("Введите объем оперативной памяти (ГБ): ");
-
-                screenSize = GetDoubleInput("Введите размер экрана (дюймы): ");
-
-                int webcamChoice = GetIntInput("Есть веб-камера? (1 - Да, 0 - Нет): ");
-                hasWebcam = (webcamChoice == 1);
-
-                addMachine(&machines, new Laptop(model, power, os, ram, screenSize, hasWebcam));
-                break;
+                cout << "Введите размер экрана: ";
+                cin >> screenSize;
+                collection[count] = new DerivedClass2(power, name, screenSize);
             }
-            case 4: {
-                string os;
-                double screenSize;
-
-                cout << "Введите операционную систему: ";
-                cin >> ws;
-                cin >> os;
-
-                screenSize = GetDoubleInput("Введите размер экрана (дюймы): ");
-
-                addMachine(&machines, new Tablet(model, power, os, screenSize));
-                break;
+            else if (type == 3) {
+                int batteryLife;
+                cout << "Введите время работы от батареи: ";
+                cin >> batteryLife;
+                collection[count] = new DerivedClass3(power, name, batteryLife);
             }
-            default:
-                cout << "Неверный выбор типа.\n";
-                break;
+            else {
+                cout << "Неверный тип элемента." << endl;
+                continue;
             }
+            count++;
             break;
         }
         case 2: {
-            if (machines == nullptr) {
-                cout << "Нет элементов для удаления.\n";
-                break;
-            }
-            int index = GetIntInput("Введите индекс для удаления: ");
-            if (deleteMachine(&machines, index)) {
-                cout << "Элемент удален.\n";
+            int index;
+            cout << "Введите индекс элемента для удаления: ";
+            cin >> index;
+            if (index >= 0 && index < count && collection[index] != nullptr) {
+                delete collection[index];
+                for (int i = index; i < count - 1; i++) {
+                    collection[i] = collection[i + 1];
+                }
+                collection[count - 1] = nullptr;
+                count--;
             }
             else {
-                cout << "Неверный индекс.\n";
+                cout << "Неверный индекс." << endl;
             }
             break;
         }
         case 3: {
-            if (machines == nullptr) {
-                cout << "Нет элементов для отображения.\n";
-                break;
+            for (int i = 0; i < count; i++) {
+                cout << "Элемент " << i << ": ";
+                collection[i]->print();
             }
-            cout << "Элементы:\n";
-            displayMachines(machines);
             break;
         }
         case 4: {
-            MachineNode* current = machines;
-            int count = 0;
-            while (current != nullptr) {
-                count++;
-                current = current->next;
-            }
-            if (count < 2) {
-                cout << "Необходимо как минимум два элемента для сравнения.\n";
-                break;
-            }
-            int index1 = GetIntInput("Введите индекс первого элемента: ");
-            int index2 = GetIntInput("Введите индекс второго элемента: ");
-
-            ComputingMachine* machine1 = getMachine(machines, index1);
-            ComputingMachine* machine2 = getMachine(machines, index2);
-
-            if (machine1 != nullptr && machine2 != nullptr) {
-                if (*machine1 == *machine2) {
-                    cout << "Элементы равны.\n";
+            int index1, index2;
+            cout << "Введите индексы двух элементов для сравнения: ";
+            cin >> index1 >> index2;
+            if (index1 >= 0 && index1 < count && index2 >= 0 && index2 < count) {
+                if (*collection[index1] == *collection[index2]) {
+                    cout << "Элементы равны." << endl;
                 }
                 else {
-                    cout << "Элементы не равны.\n";
+                    cout << "Элементы не равны." << endl;
                 }
             }
             else {
-                cout << "Неверный индекс.\n";
+                cout << "Неверные индексы." << endl;
             }
             break;
         }
         case 5: {
-            freeMachines(&machines);
-            cout << "Выход...\n";
-            return 0;
+            cout << "Завершение работы." << endl;
+            break;
         }
-        default:
-            cout << "Неверный выбор. Попробуйте снова.\n";
+        default: {
+            cout << "Неверный выбор. Попробуйте снова." << endl;
+            break;
         }
+        }
+    } while (choice != 5);
+
+    for (int i = 0; i < count; i++) {
+        delete collection[i];
     }
 
     return 0;
