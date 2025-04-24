@@ -17,6 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.project.ui.theme.ProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,10 +31,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    StartScreen {
-
-                    }
+                    MainScreen()
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+
+    NavHost(navController, startDestination = "start") {
+        composable("start") {
+            StartScreen {
+                navController.navigate("country_list")
+            }
+        }
+        composable("country_list") {
+            CountryListScreen {
+                navController.popBackStack()
             }
         }
     }
@@ -61,7 +80,6 @@ fun StartScreen(onButtonClick: () -> Unit) {
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun StartScreenPrew() {
