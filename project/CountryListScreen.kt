@@ -37,8 +37,6 @@ fun CountryListScreen(onBackClick: () -> Unit) {
                 }
             }
         )
-
-        // Здесь вы можете добавить логику для отображения списка стран.
         Text(text = "Список стран", fontSize = 24.sp, fontWeight = FontWeight.Bold)
 
         Button(onClick = onBackClick) {
