@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import java.io.IOException
 import com.example.project.ui.theme.ProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,6 +31,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ProjectTheme {
+                fetchCountryByName("Russia")
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -87,3 +93,35 @@ fun StartScreenPrew() {
         StartScreen {}
     }
 }
+
+fun fetchCountryByName(countryName: String) {
+    val url = "https://restcountries.com/v3.1/name/$countryName"
+
+    val client = OkHttpClient()
+
+    val request = Request.Builder()
+        .url(url)
+        .build()
+
+    client.newCall(request).enqueue(object : okhttp3.Callback {
+        override fun onFailure(call: okhttp3.Call, e: IOException) {
+
+            println("Ошибка при выполнении запроса: ${e.message}")
+        }
+
+        override fun onResponse(call: okhttp3.Call, response: Response) {
+            response.use { resp ->
+                if (!resp.isSuccessful) {
+                    println("Не удалось получить данные: ${resp.code}")
+                } else {
+                    val responseData = resp.body?.string()
+                    println("Ответ API:\n$responseData")
+                }
+            }
+        }
+    })
+}
+
+
+
+
