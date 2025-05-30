@@ -1,10 +1,8 @@
 package com.example.project.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,14 +21,25 @@ fun StartScreen(onButtonClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Моё приложение",
+            text = "Информация о странах",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        Button(onClick = onButtonClick) {
-            Text("Начать")
+        Text(
+            text = "Получайте актуальную информацию о странах мира",
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+            modifier = Modifier.padding(bottom = 32.dp)
+        )
+
+        Button(
+            onClick = onButtonClick,
+            modifier = Modifier.width(200.dp)
+        ) {
+            Text("Начать поиск")
         }
     }
 }
