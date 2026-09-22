@@ -1,0 +1,30 @@
+﻿@model List<WebApplication3.Models.UserActivity>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Последние действия</h5>
+    </div>
+    <div class="card-body">
+        @if (Model == null || !Model.Any())
+        {
+            <p class="text-muted">Действий не найдено.</p>
+        }
+        else
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var activity in Model)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>@activity.ActionName</strong>
+                            <small class="d-block text-muted">@activity.Details</small>
+                        </div>
+                        <span class="badge bg-secondary rounded-pill">
+                            @activity.Timestamp.ToString("HH:mm")
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model WebApplication2.Models.UserModel
+
+<h2>Форма</h2>
+
+<form asp-action="Index" method="post">
+    <partial name="_Input" model="@nameof(Model.Name)"
+             view-data="@(new ViewDataDictionary(ViewData) { { "Value", Model.Name } })" />
+
+    <partial name="_Input" model="@nameof(Model.Email)"
+             view-data="@(new ViewDataDictionary(ViewData) { { "Value", Model.Email } })" />
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    var name = Model;
+    var value = ViewData["Value"]?.ToString() ?? "";
+    var error = ViewData.ModelState[name]?.Errors.FirstOrDefault()?.ErrorMessage;
+    var css = "form-control" + (error != null ? " is-invalid" : "");
+}
+
+<div class="mb-3">
+    <label for="@name" class="form-label">@name</label>
+    <input type="text" id="@name" name="@name" value="@value" class="@css" />
+    @if (error != null)
+    {
+        <div class="invalid-feedback">@error</div>
+    }
+</div>
