@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
             return View(DataStore.Products);
         }
 
-        // Страница товаров (пример)
+        
         [HttpGet]
         public IActionResult Login() => View();
 
@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-        // Корзина (страница)
+        
         public IActionResult Cart()
         {
             if (HttpContext.Session.GetInt32("UserId") == null)
@@ -58,7 +58,7 @@ namespace WebApplication1.Controllers
             return View(cart);
         }
 
-        // Добавить в корзину
+        
         [HttpPost]
         public IActionResult AddToCart(int productId)
         {
