@@ -1,0 +1,97 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@{
+    ViewData["Title"] = "Каталог";
+    var token = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
+<meta name="csrf-token" content="@token" />
+
+<div class="filters">
+    <label>Цена от: <input type="number" id="minPrice" min="0" step="100" /></label>
+    <label>до: <input type="number" id="maxPrice" min="0" step="100" /></label>
+    <button type="button" id="applyFilter">Применить</button>
+    <button type="button" id="resetFilter">Сбросить</button>
+</div>
+
+<div id="products" class="grid"></div>
+
+<h2 style="padding: 16px 24px 0">Корзина</h2>
+<div id="cartItems" style="padding: 0 24px 24px"></div>
+
+@section Scripts {
+<script>
+    $(function () {
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+
+        function loadProducts() {
+            const min = $('#minPrice').val();
+            const max = $('#maxPrice').val();
+
+            const params = new URLSearchParams();
+            if (min) params.append('min', min);
+            if (max) params.append('max', max);
+
+            const url = '/api/products' + (params.toString() ? '?' + params.toString() : '');
+
+            $.getJSON(url, function (products) {
+                if (!products.length) {
+                    $('#products').html('<p style="padding:0 24px">Ничего не найдено</p>');
+                    return;
+                }
+                $('#products').html(products.map(p => `
+                    <div class="card">
+                        <img src="${p.image}" alt="${p.name}" class="card-img" loading="lazy" />
+                        <h3>${p.name}</h3>
+                        <div>${p.price} ₽</div>
+                        <button type="button" class="add" data-id="${p.id}">В корзину</button>
+                    </div>
+                `).join(''));
+            });
+        }
+
+        function renderCart(data) {
+            $('#cartCount').text(data.count);
+            $('#cartTotal').text(data.total.toFixed(2));
+
+            if (!data.items.length) {
+                $('#cartItems').html('<p>Корзина пуста</p>');
+                return;
+            }
+            $('#cartItems').html(data.items.map(i => `
+                <div class="cart-row">
+                    <span>${i.name}</span>
+                    <span>${i.price} ₽ × ${i.quantity}</span>
+                    <button type="button" class="remove" data-id="${i.productId}">Удалить</button>
+                </div>
+            `).join(''));
+        }
+
+       
+        $(document).on('click', '#applyFilter', function () {
+            loadProducts();
+        });
+
+        $(document).on('click', '#resetFilter', function () {
+            $('#minPrice').val('');
+            $('#maxPrice').val('');
+            loadProducts();
+        });
+
+        $(document).on('click', '.add', function () {
+            $.post('/api/cart/add/' + $(this).data('id'), renderCart);
+        });
+
+        $(document).on('click', '.remove', function () {
+            $.ajax({
+                url: '/api/cart/remove/' + $(this).data('id'),
+                method: 'DELETE'
+            }).done(renderCart);
+        });
+
+        
+        loadProducts();
+        $.getJSON('/api/cart', renderCart);
+    });
+</script>
+}

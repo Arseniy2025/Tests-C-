@@ -1,0 +1,177 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\models\\shopservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\models\\shopservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|c:\\users\\arsen\\desktop\\programm\\c#\\webapplication2\\webapplication2\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D01E648-0A57-46B7-8F81-4327224DF6C8}|WebApplication2\\WebApplication2.csproj|solutionrelative:webapplication2\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "WebApplication2\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "WebApplication2\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-11T07:36:13.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebApplication2\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebApplication2\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAABsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-11T05:59:12.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebApplication2\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WebApplication2\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAADAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-11T06:03:14.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Program.cs",
+              "RelativeDocumentMoniker": "WebApplication2\\Program.cs",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Program.cs",
+              "RelativeToolTip": "WebApplication2\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-11T06:04:03.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "WebApplication2\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "WebApplication2\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-11T07:36:22.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApiController.cs",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Controllers\\ApiController.cs",
+              "RelativeDocumentMoniker": "WebApplication2\\Controllers\\ApiController.cs",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Controllers\\ApiController.cs",
+              "RelativeToolTip": "WebApplication2\\Controllers\\ApiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-11T05:57:19.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShopService.cs",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Models\\ShopService.cs",
+              "RelativeDocumentMoniker": "WebApplication2\\Models\\ShopService.cs",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Models\\ShopService.cs",
+              "RelativeToolTip": "WebApplication2\\Models\\ShopService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowDMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-11T06:16:01.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Models\\Models.cs",
+              "RelativeDocumentMoniker": "WebApplication2\\Models\\Models.cs",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Models\\Models.cs",
+              "RelativeToolTip": "WebApplication2\\Models\\Models.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-11T06:15:47.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebApplication2\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Arsen\\Desktop\\Programm\\C#\\WebApplication2\\WebApplication2\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebApplication2\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-11T05:53:10.752Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
