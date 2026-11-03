@@ -1,0 +1,22 @@
+<div class="shop-container">
+  <h2>Интернет-магазин</h2>
+
+  <button (click)="toggleAuth()">
+    {{ isLoggedIn() ? 'Выйти' : 'Войти' }}
+  </button>
+
+  <div *ngIf="isLoggedIn(); else notAuthorized">
+    <h3>Список продуктов:</h3>
+    <ul class="product-list">
+      <li *ngFor="let product of products()">
+        <strong>{{ product.name }}</strong> — {{ product.price }} руб 
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #notAuthorized>
+    <p class="warning">
+      Пожалуйста, авторизуйтесь, чтобы увидеть список товаров.
+    </p>
+  </ng-template>
+</div>
