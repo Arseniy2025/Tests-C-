@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Интернет-магазин</title>
+
+</head>
+<body>
+
+<header>
+    <h1>Магазин</h1>
+    <div class="user-info">
+        <span id="userLabel">Гость</span>
+        <button id="loginBtn" onclick="openLogin()">Войти</button>
+        <button id="logoutBtn" style="display:none" onclick="logout()">Выйти</button>
+        <button id="adminBtn" style="display:none" onclick="toggleAdminPanel()">Админ-панель</button>
+    </div>
+</header>
+
+<nav>
+    <a href="#" onclick="logAction('Переход: Главная')">Главная</a>
+    <a href="#" onclick="logAction('Переход: Каталог')">Каталог</a>
+    <a href="#" onclick="logAction('Переход: Корзина')">Корзина</a>
+    <a href="#" onclick="logAction('Переход: Контакты')">Контакты</a>
+</nav>
+
+<div class="container">
+    <h2 style="margin-bottom:15px">Товары</h2>
+    <div class="products" id="products"></div>
+</div>
+
+
+<div id="adminPanel" style="display:none" class="container">
+    <h2>Админ-панель</h2>
+    <p>Здесь будет управление товарами и пользователями (для демо).</p>
+</div>
+
+
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <h2>Вход</h2>
+        <input type="text" id="loginInput" placeholder="Логин (admin/user)">
+        <input type="password" id="passInput" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+        <button onclick="closeLogin()" style="background:#999; margin-top:8px">Отмена</button>
+    </div>
+</div>
+
+
+<div id="logPanel">
+    <h4>Логи действий</h4>
+    <div id="logs"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
