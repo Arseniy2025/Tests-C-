@@ -69,3 +69,35 @@
     }
     #logPanel h4 { color:#fff; margin-bottom:5px; font-family:Arial; }
     .log-entry { border-bottom:1px solid #444; padding:2px 0; }
+
+
+.card .stock { font-size:12px; color:#555; margin:4px 0 8px; }
+.card button:disabled { background:#aaa; cursor:not-allowed; }
+
+
+#cartBox { background:#fff; border-radius:8px; padding:15px; margin-bottom:12px; }
+.cart-row { display:flex; justify-content:space-between; align-items:center;
+            padding:6px 0; border-bottom:1px solid #eee; }
+.cart-row button { background:#e74c3c; color:#fff; border:none;
+                    border-radius:4px; width:26px; height:26px; cursor:pointer; }
+.cart-total { text-align:right; font-weight:bold; margin-top:10px; }
+.empty { color:#888; }
+.checkout-btn {
+    padding:10px 18px; border:none; border-radius:4px;
+    background:#2980b9; color:#fff; cursor:pointer; font-size:15px;
+}
+.checkout-btn:hover { background:#1f618d; }
+
+
+.modal-content select {
+    width:100%; padding:8px; margin:6px 0 10px;
+    border:1px solid #ccc; border-radius:4px;
+}
+.hint { font-size:12px; color:#2980b9; margin-bottom:8px; }
+.delivery-info {
+    background:#f0f7ff; border-left:4px solid #3498db;
+    padding:10px; border-radius:4px; font-size:13px;
+    line-height:1.5; margin-bottom:12px;
+}
+
+

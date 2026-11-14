@@ -53,6 +53,29 @@
     <div id="logs"></div>
 </div>
 
+
+<div class="container">
+    <h2 style="margin-bottom:15px">Корзина</h2>
+    <div id="cartBox"></div>
+    <button class="checkout-btn" onclick="openCheckout()">Оформить заказ</button>
+</div>
+
+<div class="modal" id="checkoutModal">
+    <div class="modal-content" style="width:380px">
+        <h2>Оформление заказа</h2>
+        <p id="nearestHint" class="hint"></p>
+        <label>Пункт выдачи:</label>
+        <select id="pvzSelect" onchange="updateDeliveryPreview()"></select>
+        <div id="deliveryInfo" class="delivery-info"></div>
+        <button onclick="confirmOrder()">Подтвердить заказ</button>
+        <button onclick="closeCheckout()" style="background:#999; margin-top:8px">Отмена</button>
+    </div>
+</div>
+
+
+
+
+
 <script src="script.js"></script>
 </body>
 </html>
